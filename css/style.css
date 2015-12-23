@@ -1,30 +1,20 @@
 /* Primary style */
-
-*, *:after, a:bofore {
-	box-sizing: border-box;
-}
-
-html {
-	font-size: 62.5%; /* font-size 1em = 10px */
-}
-
 body {
-	font-size: 1.6em;
-	font-family: sans-serif;
+	font-size: 16px;
+	font-family: Arial, sans-serif;
 	color: white;
-	background: #050404;
+	background-color: #50514f;
 }
 
 a {
 	text-decoration: none;
 }
 
-/* Tooltip */
-
+/* Btn tooltip center */
 section {
+	display: table;
 	width: 100%;
 	height: 100vh;
-	display: table;
 }
 
 section .center {
@@ -33,31 +23,34 @@ section .center {
 	text-align: center;
 }
 
-.trigger {
+/* Btn tooltip style */
+
+.btn__tooltip {
 	position: relative;
-	background: #893168;
 	display: inline-block;
 	width: 200px;
 	height: 60px;
-	border-radius: 50em;
-	box-shadow: 0 2px 20px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 	color: white;
+	background-color: #70c1b3;
+
+	border-radius: 50px;
+	box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 span, em, i {
 	position: absolute;
+	left: 0;
+
 	width: 100%;
 	height: 100%;
-	left: 0;
-	/*background: green;*/
+}
+
+em, i {
+	transition: top 0.3s ease;
 }
 
 span {
 	overflow: hidden;
-}
-
-em, i {
-	transition: top 0.3s;
 }
 
 em {
@@ -67,56 +60,59 @@ em {
 
 i {
 	top: 100%;
-	background: url(../img/ic/ic-download.svg) no-repeat center center;
+	background: url(../img/ic-download.svg) no-repeat center center;
 }
 
-.trigger:hover em {
+.btn__tooltip:hover em {
 	top: -100%;
 }
 
-.trigger:hover i {
+.btn__tooltip:hover i {
 	top: 0;
 }
 
-.trigger::before, .trigger::after {
+.btn__tooltip:before,
+.btn__tooltip:after {
 	position: absolute;
 	opacity: 0;
 	visibility: hidden;
-	transition: all 0.3s;
+
+	transition: all 0.3s ease;
 }
 
-.trigger::before {
+.btn__tooltip:before {
 	content: 'Files Size: 50M';
-	position: absolute;
 	width: 140px;
 	height: 60px;
 	line-height: 60px;
-	background: #2e1c2b;
-	border-radius: 0.25em;
-	bottom: 90px;
+	color: #50514f;
+	background-color: #ffe066;
+	border-radius: 4px;
+
 	left: calc(50% - 70px);
+	bottom: 90px;
 }
 
-.trigger::after {
+.btn__tooltip:after {
 	content: '';
 	width: 0;
 	height: 0;
 	border: 10px solid transparent;
-	border-top-color: #2e1c2b;
+	border-top-color: #ffe066;
 	left: calc(50% - 10px);
 	bottom: 70px;
 }
 
-.trigger:hover::before,
-.trigger:hover::after {
+.btn__tooltip:hover:before,
+.btn__tooltip:hover:after {
 	opacity: 1;
 	visibility: visible;
 }
 
-.trigger:hover::before {
+.btn__tooltip:hover:before {
 	bottom: 80px;
 }
 
-.trigger:hover::after {
+.btn__tooltip:hover:after {
 	bottom: 60px;
 }
